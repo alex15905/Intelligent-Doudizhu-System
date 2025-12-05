@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>DouDiZhuAI - 控制面板</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="admin-app">
+    <header class="header">
+        <h1>DouDiZhuAI 控制面板</h1>
+        <div class="status-bar">
+            <span>管理员视图（token=admin）</span>
+            <span id="admin-refresh-status">状态：未刷新</span>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-section">
+            <h2>玩家手牌</h2>
+            <div id="admin-players" class="admin-players"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>底牌 & 局面</h2>
+            <div id="admin-bottom"></div>
+            <div id="admin-game-info"></div>
+        </section>
+
+        <section class="admin-section">
+            <h2>出牌历史</h2>
+            <div id="admin-history" class="log-messages"></div>
+        </section>
+    </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/admin_ui.js"></script>
+</body>
+</html>

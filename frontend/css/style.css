@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0b1020;
+    color: #f5f5f5;
+}
+
+.header {
+    padding: 12px 20px;
+    background: #141a33;
+    border-bottom: 1px solid #242b4a;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.header h1 {
+    font-size: 20px;
+}
+
+.status-bar {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #a9b3d1;
+}
+
+.main-layout {
+    padding: 10px;
+}
+
+.board {
+    position: relative;
+    height: calc(100vh - 80px);
+    border-radius: 12px;
+    border: 1px solid #242b4a;
+    background: radial-gradient(circle at top, #1d2645, #050713);
+    display: grid;
+    grid-template-areas:
+      "top top"
+      "left center"
+      "bottom bottom";
+    grid-template-rows: 100px 1fr 260px;
+    grid-template-columns: 1fr 1.4fr;
+    padding: 10px;
+    gap: 8px;
+}
+
+.player-area {
+    border-radius: 10px;
+    padding: 8px;
+    background: rgba(7, 9, 20, 0.7);
+    border: 1px solid #242b4a;
+}
+
+.player-top {
+    grid-area: top;
+}
+
+.player-bottom {
+    grid-area: bottom;
+}
+
+.player-right {
+    grid-area: left;
+}
+
+.center-area {
+    grid-area: center;
+    border-radius: 10px;
+    padding: 8px;
+    background: rgba(7, 9, 20, 0.7);
+    border: 1px solid #242b4a;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.hand-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 6px 0;
+    min-height: 60px;
+}
+
+.card {
+    min-width: 38px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid #3a4263;
+    background: linear-gradient(135deg, #1e2450, #141a33);
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.card.red {
+    color: #ff8f9f;
+}
+
+.card.black {
+    color: #e0e6ff;
+}
+
+.card.small {
+    font-size: 12px;
+    padding: 2px 5px;
+}
+
+.card.selected {
+    border-color: #ffb347;
+    box-shadow: 0 0 8px rgba(255, 179, 71, 0.6);
+    transform: translateY(-4px);
+}
+
+.controls {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #2e74ff;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+button:hover {
+    background: #4a8bff;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button#btn-pass {
+    background: #555a7c;
+}
+
+button#btn-pass:hover {
+    background: #6c7295;
+}
+
+button#btn-reconnect {
+    background: #228b22;
+}
+
+button#btn-reconnect:hover {
+    background: #2fa82f;
+}
+
+.play-area {
+    margin-top: 6px;
+    min-height: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.log-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.log-panel h2 {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.log-messages {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 6px;
+    border: 1px solid #242b4a;
+    padding: 6px;
+    font-size: 12px;
+    background: rgba(5, 7, 15, 0.8);
+}
+
+.log-entry {
+    margin-bottom: 4px;
+}
+
+.log-entry span.time {
+    color: #7b86a5;
+    margin-right: 6px;
+}
+
+.log-entry span.text {
+    color: #dde3ff;
+}
+
+.log-entry.system {
+    color: #ffcb6b;
+}
+
+.log-entry.error {
+    color: #ff7676;
+}
+
+.admin-main {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "players state"
+      "history history";
+    gap: 8px;
+}
+
+.admin-section {
+    border-radius: 10px;
+    padding: 8px;
+    background: rgba(7, 9, 20, 0.7);
+    border: 1px solid #242b4a;
+    font-size: 13px;
+}
+
+.admin-section h2 {
+    margin-bottom: 6px;
+}
+
+#admin-players {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-player-card {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid #343b5c;
+    padding: 6px;
+    background: rgba(10, 12, 25, 0.8);
+}
+
+.admin-player-card h3 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.admin-player-hand {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+#admin-bottom {
+    margin-bottom: 6px;
+}
+
+#admin-game-info {
+    font-size: 12px;
+    color: #a9b3d1;
+}
+
+.status-ok {
+    color: #3ed47f;
+}
+
+.status-bad {
+    color: #ff7676;
+}

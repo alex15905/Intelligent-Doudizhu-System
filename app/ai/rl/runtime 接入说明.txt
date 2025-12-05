@@ -1,0 +1,34 @@
+==============
+深度模型接入方式
+==============
+
+你训练完成后会得到：
+  model/ppo_final.pt
+或
+  model/ppo_checkpoint_xxxxx.pt
+
+要让真实斗地主系统使用 PPO 模型：
+
+1) 在 runtime.py 中替换 AI：
+--------------------------------
+
+from app.ai.rl.inference_ppo import DeepRLInferenceEngine
+
+ai = DeepRLInferenceEngine("model/ppo_final.pt")
+
+每次轮到 AI 出牌：
+-------------------
+
+obs = dealer.get_observation(player_id)
+moves = runtime 生成所有合法动作
+encoded_state = encode_state(obs)
+
+让 PPO 模型给动作索引：
+action_idx = ai.select_action(encoded_state, moves)
+
+moves[action_idx] 就是真实出牌。
+
+AI 不负责判断牌型，也不负责判断能否压牌，
+这些全部由你的 DealerReferee & Rules 完成。
+
+PPO 只负责在可用动作中选择最优动作。

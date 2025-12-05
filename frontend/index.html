@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>DouDiZhuAI - 玩家界面</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <header class="header">
+        <h1>DouDiZhuAI 玩家界面</h1>
+        <div class="status-bar">
+            <span id="connection-status">未连接</span>
+            <span id="turn-status">当前回合：-</span>
+            <span id="role-status">身份：-</span>
+            <span id="multiplier-status">倍数：1</span>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="board">
+            <div class="player-area player-top">
+                <div class="player-info">
+                    <span>Bot1</span>
+                    <span>手牌：<span id="bot1-hand-count">0</span> 张</span>
+                </div>
+                <div class="play-area" id="bot1-play-area"></div>
+            </div>
+
+            <div class="center-area">
+                <div class="log-panel">
+                    <h2>对局日志</h2>
+                    <div id="log-messages" class="log-messages"></div>
+                </div>
+            </div>
+
+            <div class="player-area player-bottom">
+                <div class="player-info">
+                    <span>你（Human）</span>
+                    <span>手牌：<span id="human-hand-count">0</span> 张</span>
+                </div>
+                <div id="human-hand" class="hand-cards"></div>
+                <div class="controls">
+                    <button id="btn-play">出牌</button>
+                    <button id="btn-pass">不要</button>
+                    <button id="btn-reconnect">重新连接</button>
+                </div>
+                <div class="play-area" id="human-play-area"></div>
+            </div>
+
+            <div class="player-area player-right">
+                <div class="player-info">
+                    <span>Bot2</span>
+                    <span>手牌：<span id="bot2-hand-count">0</span> 张</span>
+                </div>
+                <div class="play-area" id="bot2-play-area"></div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/ws_client.js"></script>
+<script src="js/game_logic_client.js"></script>
+<script src="js/game_ui.js"></script>
+</body>
+</html>
